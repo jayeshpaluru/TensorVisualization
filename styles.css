@@ -24,6 +24,7 @@ header, main, footer {
 h1, h2 {
     font-weight: 300;
     letter-spacing: -0.5px;
+    text-transform: lowercase;
 }
 
 h1 {
@@ -48,6 +49,7 @@ button, input[type="submit"] {
     cursor: pointer;
     transition: all 0.3s ease;
     border-radius: 4px;
+    text-transform: lowercase;
 }
 
 button:hover, input[type="submit"]:hover {
@@ -65,7 +67,7 @@ input[type="text"], input[type="number"] {
     color: var(--text-color);
 }
 
-#tensor-info, #operation-explanation, #simulation-progress {
+#tool-explanation, #tensor-info, #operation-explanation, #simulation-progress {
     background-color: #ffffff;
     border: 1px solid var(--accent-color);
     padding: 20px;
@@ -77,21 +79,6 @@ input[type="text"], input[type="number"] {
     width: 100%;
     height: 500px;
     display: block;
-}
-
-
-@media (max-width: 768px) {
-    #visualization-container {
-        height: 50vh;
-        min-height: 300px;
-    }
-}
-
-.orbit-controls {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    z-index: 10;
 }
 
 #color-legend {
@@ -126,17 +113,8 @@ input[type="text"], input[type="number"] {
     transform: scale(1.2);
 }
 
-#operations-form button[type="submit"] {
-    margin-top: 10px;
-}
-
 form {
     margin-bottom: 20px;
-}
-
-#tensor-info {
-    background-color: #f9f9f9;
-    border-radius: 4px;
 }
 
 #simulation-progress {
@@ -158,20 +136,6 @@ a {
 
 a:hover {
     text-decoration: underline;
-}
-
-@media (max-width: 768px) {
-    body {
-        font-size: 14px;
-    }
-
-    header, main, footer {
-        padding: 10px;
-    }
-
-    #operation-checkboxes {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    }
 }
 
 @media (max-width: 768px) {

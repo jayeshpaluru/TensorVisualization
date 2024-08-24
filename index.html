@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="a tool for visualizing and manipulating tensors in machine learning">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tensor visualization tool</title>
     <link rel="stylesheet" href="styles.css">
 </head>    
@@ -14,6 +13,18 @@
     </header>
     
     <main>
+        <section id="tool-explanation">
+            <h2>usefulness of this tool</h2>
+            <p>this tensor visualization tool bridges the gap between abstract mathematical concepts and visual understanding in machine learning. by providing a dynamic, interactive representation of tensors, it helps users:</p>
+            <ul>
+                <li>visualize the structure and changes in multi-dimensional data</li>
+                <li>understand how different operations affect tensor values over time</li>
+                <li>gain intuition about complex processes like gradient descent and backpropagation</li>
+                <li>explore the effects of various activation functions and tensor operations</li>
+                <li>demystify the internal workings of neural networks and deep learning models</li>
+            </ul>
+        </section>
+
         <section id="learn-about-tensors">
             <h2>understanding tensors</h2>
             <p><strong>tensors in machine learning:</strong></p>
@@ -36,12 +47,6 @@
             </form>
         </section>
 
-        <section id="tensor-visualization">
-            <h2>tensor visualization</h2>
-            <canvas id="visualization-canvas"></canvas>
-            <div id="color-legend"></div>
-        </section>
-
         <section id="tensor-operations">
             <h2>tensor operations</h2>
             <form id="operations-form">
@@ -52,7 +57,6 @@
                     <label><input type="checkbox" name="operation" value="matrix_power"> matrix power</label>
                     <label><input type="checkbox" name="operation" value="conv"> convolution</label>
                 </div>
-                <button type="submit">apply selected operations</button>
             </form>
             <div id="operation-explanation"></div>
         </section>
@@ -66,10 +70,16 @@
             </form>
             <div id="simulation-progress"></div>
         </section>
+
+        <section id="tensor-visualization">
+            <h2>tensor visualization</h2>
+            <canvas id="visualization-canvas"></canvas>
+            <div id="color-legend"></div>
+        </section>
     </main>
 
     <footer>
-        <p>created by jayeshpaluru | <a href="https://github.com/jayeshpaluru/tensor-viz" target="_blank">github</a></p>
+        <p>created by jayesh paluru | <a href="https://github.com/jayeshpaluru/tensor-viz" target="_blank">github</a></p>
     </footer>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
