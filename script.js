@@ -27,12 +27,11 @@ function initThreeJS() {
         return;
     }
     scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
     renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
-    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    resizeRendererToDisplaySize(renderer);
 
-
+    const aspect = canvas.clientWidth / canvas.clientHeight;
+    camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 1000);
     camera.position.set(20, 20, 20);
 
     setupOrbitControls();
@@ -42,6 +41,18 @@ function initThreeJS() {
     // Add axes helper
     scene.add(new THREE.AxesHelper(20));
 }
+
+function resizeRendererToDisplaySize(renderer) {
+    const canvas = renderer.domElement;
+    const width = canvas.clientWidth;
+    const height = canvas.clientHeight;
+    const needResize = canvas.width !== width || canvas.height !== height;
+    if (needResize) {
+        renderer.setSize(width, height, false);
+    }
+    return needResize;
+}
+
 
 function setupOrbitControls() {
     controls = new OrbitControls(camera, renderer.domElement);
@@ -66,10 +77,11 @@ function handleWindowResize() {
 }
 
 function onWindowResize() {
-    const canvas = renderer.domElement;
-    camera.aspect = canvas.clientWidth / canvas.clientHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+    if (resizeRendererToDisplaySize(renderer)) {
+        const canvas = renderer.domElement;
+        camera.aspect = canvas.clientWidth / canvas.clientHeight;
+        camera.updateProjectionMatrix();
+    }
 }
 
 
@@ -158,10 +170,15 @@ function adjustCamera(shape) {
 
 function animate() {
     requestAnimationFrame(animate);
+    if (resizeRendererToDisplaySize(renderer)) {
+        const canvas = renderer.domElement;
+        camera.aspect = canvas.clientWidth / canvas.clientHeight;
+        camera.updateProjectionMatrix();
+    }
     controls.update();
-    console.log('Camera position:', camera.position);
     renderer.render(scene, camera);
 }
+
 
 
 

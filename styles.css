@@ -173,3 +173,47 @@ a:hover {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
 }
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    header, main, footer {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    #visualization-canvas {
+        height: 300px;
+    }
+
+    #operation-checkboxes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    #visualization-canvas {
+        height: 250px;
+    }
+
+    #operation-checkboxes {
+        grid-template-columns: 1fr;
+    }
+}
