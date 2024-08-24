@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="a tool for visualizing and manipulating tensors in machine learning">
+    <title>tensor visualization tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>    
+<body>
+    <header>
+        <h1>tensor visualization tool</h1>
+    </header>
+    
+    <main>
+        <section id="learn-about-tensors">
+            <h2>understanding tensors</h2>
+            <p><strong>tensors in machine learning:</strong></p>
+            <p>tensors are multi-dimensional arrays that represent complex data structures. in ml, they're used to store and process data efficiently.</p>
+            <ul>
+                <li>0d tensor: a scalar (single number)</li>
+                <li>1d tensor: a vector (list of numbers)</li>
+                <li>2d tensor: a matrix (table of numbers)</li>
+                <li>3d+ tensor: higher dimensional data structures</li>
+            </ul>
+            <p>tensors allow for parallel processing and are crucial for handling large datasets in neural networks and deep learning models.</p>
+        </section>
+
+        <section id="tensor-creation">
+            <h2>create tensor</h2>
+            <form id="tensor-form">
+                <label for="tensor-shape">tensor shape (e.g., 10,10,3):</label>
+                <input type="text" id="tensor-shape" required pattern="\d+,\d+,\d+">
+                <button type="submit">create random tensor</button>
+            </form>
+        </section>
+
+        <section id="tensor-visualization">
+            <h2>tensor visualization</h2>
+            <canvas id="visualization-canvas"></canvas>
+            <div id="color-legend"></div>
+        </section>
+
+        <section id="tensor-operations">
+            <h2>tensor operations</h2>
+            <form id="operations-form">
+                <div id="operation-checkboxes">
+                    <label><input type="checkbox" name="operation" value="sine"> sine</label>
+                    <label><input type="checkbox" name="operation" value="tanh"> tanh</label>
+                    <label><input type="checkbox" name="operation" value="exp_decay"> exponential decay</label>
+                    <label><input type="checkbox" name="operation" value="matrix_power"> matrix power</label>
+                    <label><input type="checkbox" name="operation" value="conv"> convolution</label>
+                </div>
+                <button type="submit">apply selected operations</button>
+            </form>
+            <div id="operation-explanation"></div>
+        </section>
+
+        <section id="simulation">
+            <h2>simulate training</h2>
+            <form id="simulation-form">
+                <label for="step-count">number of steps (1-1000):</label>
+                <input type="number" id="step-count" min="1" max="1000" required>
+                <button type="submit">start simulation</button>
+            </form>
+            <div id="simulation-progress"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>created by jayeshpaluru | <a href="https://github.com/jayeshpaluru/tensor-viz" target="_blank">github</a></p>
+    </footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
