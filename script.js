@@ -108,7 +108,9 @@ function createColorLegend() {
         colorBox.style.backgroundColor = color;
         colorBox.style.width = '20px';
         colorBox.style.height = '20px';
-        colorBox.title = `Value range: ${(index / (colors.length - 1)).toFixed(2)} - ${((index + 1) / (colors.length - 1)).toFixed(2)}`;
+        const minValue = -1 + (index * 2 / (colors.length - 1));
+        const maxValue = -1 + ((index + 1) * 2 / (colors.length - 1));
+        colorBox.title = `Value range: ${minValue.toFixed(2)} to ${maxValue.toFixed(2)}`;
         legend.appendChild(colorBox);
     });
 }
@@ -342,9 +344,15 @@ async function simulateTraining() {
     const progressElement = document.getElementById('simulation-progress');
     const explanationElement = document.getElementById('operation-explanation');
 
+    // Clear the explanation at the start of simulation
+    if (explanationElement) explanationElement.textContent = '';
+
     function simulationStep(step) {
         if (step >= steps) {
             if (progressElement) progressElement.textContent = 'Simulation complete!';
+            // Only update explanation when simulation is complete
+            const lastOpName = userOps[(steps - 1) % userOps.length][0];
+            if (explanationElement) explanationElement.textContent = explainOperationEffect(lastOpName);
             return;
         }
 
@@ -353,13 +361,13 @@ async function simulateTraining() {
 
         visualizeTensor(currentTensor);
         if (progressElement) progressElement.textContent = `Step ${step + 1}/${steps}: Applied ${opName}`;
-        if (explanationElement) explanationElement.textContent = explainOperationEffect(opName);
 
         setTimeout(() => simulationStep(step + 1), 100);
     }
 
     simulationStep(0);
 }
+
 
 function setupEventListeners() {
     const tensorForm = document.getElementById('tensor-form');
