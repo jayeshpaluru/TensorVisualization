@@ -418,4 +418,3 @@ function initializeDefaultTensor() {
 }
 
 document.addEventListener('DOMContentLoaded', initializeApplication);
-
